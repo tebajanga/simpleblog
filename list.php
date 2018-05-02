@@ -14,47 +14,44 @@
         <hr />
 
         <div class="posts">
-            <div class="post">
-                <div class="header">
-                    <h2>This is the first blog post title</h2>
-                </div>
-                <div class="content">
-                    <img src="uploads/images/image1.jpg" />
-                    <div class="date">
-                        <span>Date HERE<span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Fusce gravida vehicula ipsum ac ultricies. 
-                        Fusce facilisis ultrices sem, in vestibulum lacus interdum at. 
-                        Etiam quis consequat leo. Praesent a vulputate mi. 
-                        Maecenas in imperdiet quam. Ut suscipit risus quam, id pellentesque lectus sodales sit amet. 
-                        Vestibulum dignissim arcu ut orci aliquam scelerisque.
-                    </p>
-                    <br />
-                    <center><a href="" class="btn-orange">Continue Reading</a></center>
-                </div>
-            </div>
+            <!-- Fetching posts from database -->
+            <?php
+                // Include config file
+                require_once 'config/database.php';
 
-            <div class="post">
-                <div class="header">
-                    <h2>This is the second blog post title</h2>
-                </div>
-                <div class="content">
-                    <img src="uploads/images/image2.jpg" />
-                    <div class="date">
-                        <span>Date HERE<span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                        Fusce gravida vehicula ipsum ac ultricies. 
-                        Fusce facilisis ultrices sem, in vestibulum lacus interdum at. 
-                        Etiam quis consequat leo. Praesent a vulputate mi. 
-                        Maecenas in imperdiet quam. Ut suscipit risus quam, id pellentesque lectus sodales sit amet. 
-                        Vestibulum dignissim arcu ut orci aliquam scelerisque.
-                    </p>
-                    <br />
-                    <center><a href="" class="btn-orange">Continue Reading</a></center>
-                </div>
-            </div>
+                // Fetching all posts.
+                $sql = "SELECT * FROM posts ORDER BY created_at DESC";
+                if($posts = mysqli_query($link, $sql)){
+                    if(mysqli_num_rows($posts) > 0){
+                        while($post = mysqli_fetch_array($posts)){?>
+                            <div class="post">
+                                <div class="header">
+                                    <h2><?= $post['title']; ?></h2>
+                                </div>
+                                <div class="content">
+                                    <img src="uploads/images/<?= $post['image']; ?>" />
+                                    <div class="date">
+                                        <span><?= (new DateTime($post['created_at']))->format('M d, Y'); ?></span>
+                                    </div>
+                                    <p>
+                                        <?php
+                                            // Checking description length.
+                                            if(strlen($post['description']) > 300){
+                                                $description = substr($post['description'], 0, 300);
+                                                $description .= "...";
+                                                echo $description;
+                                            }
+                                            else echo $post['description'];
+                                        ?>
+                                    </p>
+                                    <br />
+                                    <center><a href="post.php?id=<?= $post['id']; ?>" class="btn-orange">Continue Reading</a></center>
+                                </div>
+                            </div><!-- close div .post -->
+                        <?php }
+                    }
+                }
+            ?>
         </div>
     </body>
 </html>

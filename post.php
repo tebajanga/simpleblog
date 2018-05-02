@@ -21,7 +21,7 @@
                 <div class="content">
                     <img style="object-fit: unset; height: auto;" src="uploads/images/image1.jpg" />
                     <div class="date">
-                        <span>Date HERE<span>
+                        <span>Date HERE</span>
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                         Fusce gravida vehicula ipsum ac ultricies. 
