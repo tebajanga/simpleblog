@@ -32,6 +32,7 @@ h1{
     padding-left: 30%;
     padding-right: 30%;
     overflow: auto;
+    min-height: 100vh;
 }
 
 .post{
@@ -87,6 +88,29 @@ h1{
 .full-image{
     height: auto;
     object-fit: unset;
+}
+
+.alert{
+    width: 100%;
+    padding: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.alert-danger{
+    background: #e24e1b;
+}
+
+.alert-success{
+    background: #a0ca92;
+}
+
+.alert-info{
+    background: #009fb7;
+}
+
+.alert-warning{
+    background: #fed766;
 }
 
 .post-form .form-input{

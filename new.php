@@ -1,5 +1,11 @@
 <!-- Adding new post -->
 <?php
+    // Global variables.
+    $errors = false;
+    $class = "";
+    $fa = "";
+    $message = "";
+    
     if(isset($_POST['addpost'])){
         // Check passed values
         if( (isset($_POST['title']) && !empty($_POST['title'])) && 
@@ -16,8 +22,6 @@
                 $target_dir = "uploads/images/";
                 $target_file = $target_dir . basename($_FILES["image"]["name"]);
 
-                var_dump($target_file);
-
                 // Upload a file.
                 if(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)){
                     // Saving post to database.
@@ -26,31 +30,49 @@
 
                     $sql = "INSERT INTO posts (`title`, `description`, `image`) VALUES ('$title', '$description', '$image_name')";
                     if(mysqli_query($link, $sql)){
-                        echo "Records added successfully.";
+                        // Post added.
+                        $errors = true;
+                        $class= "alert-success";
+                        $fa = "fa-check";
+                        $message = "Post added successfully.";
                     }
                     else{
-                         // To Do. Fail to save post.
+                        // Fail to save post.
+                        $errors = true;
+                        $class= "alert-danger";
+                        $fa = "fa-ban";
+                        $message = "Can not add new post. Please try to add a new post again.";
                     }
 
                     // close connection
                     mysqli_close($link);
                 }
                 else{
-                    // To Do. Upload image failed.
-
+                    // Upload image failed.
+                    $errors = true;
+                    $class= "alert-danger";
+                    $fa = "fa-ban";
+                    $message = "Can not upload the post image. Please try to add a new post again.";
                 }
             }
             else{
-                // To Do. Handling not image file.
+                // File is not image.
+                $errors = true;
+                $class= "alert-warning";
+                $fa = "fa-frown";
+                $message = "The post image should be in a format of .png, .jpg, .jpeg etc.";
             }
         }
         else{
-            // To Do. No required values posted.
+            // No required values posted.
+            $errors = true;
+            $class= "alert-warning";
+            $fa = "fa-frown";
+            $message = "To add new post submit title, image and description.";
         }
     }
     else{
-        // To Do. Handling no POST.
-
+        // Do nothing.
     }
 ?>
 <!DOCTYPE html>
@@ -61,7 +83,9 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+        
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">  
         <link rel="stylesheet" href="css/simpleblog.css">
     </head>
@@ -70,14 +94,21 @@
             <h1>Simple Blog</h1>
         </header>
 
-        <div class="posts" style="min-height: 100vh;">
+        <div class="posts">
             <div style="width:100%; margin-bottom: 50px;">
                 <a href="list.php" class="btn-orange">
                     <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;Posts
                 </a>
             </div>
+
             <?php
-                
+                // Handling errors.
+                if($errors){?>
+                    <div class="alert <?= $class; ?>">
+                        <span class="fa <?= $fa; ?>"></span>
+                        <span><?= $message; ?></span>
+                    </div>
+               <?php }
             ?>
 
             <h2>Adding new post</h2>
