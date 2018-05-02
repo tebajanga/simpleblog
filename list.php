@@ -6,12 +6,14 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Lato|Roboto" rel="stylesheet">  
         <link rel="stylesheet" href="css/simpleblog.css">
     </head>
     <body>
-        <h1>Simple Blog</h1>
-        <hr />
+        <header>
+            <h1>Simple Blog</h1>
+        </header>
 
         <div class="posts">
             <!-- Fetching posts from database -->
@@ -51,7 +53,14 @@
                         <?php }
                     }
                 }
+
+                // Close connection
+                mysqli_close($link);
             ?>
         </div>
+
+        <footer>
+            <span>&copy; 2018 - SimpleBlog</span>
+        </footer>
     </body>
 </html>

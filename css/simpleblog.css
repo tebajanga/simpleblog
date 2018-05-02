@@ -1,5 +1,16 @@
 body{
     font-family: 'Lato', sans-serif;
+    padding: 0px;
+    margin: 0px;
+}
+
+header{
+    position: fixed;
+    width: 100%;
+    background: #fff;
+    -webkit-box-shadow: 0px 3px 3px 0px rgba(204,204,204,1);
+-moz-box-shadow: 0px 3px 3px 0px rgba(204,204,204,1);
+box-shadow: 0px 3px 3px 0px rgba(204,204,204,1);
 }
 
 hr{
@@ -16,10 +27,11 @@ h1{
 }
 
 .posts{
-    padding-top: 30px;
+    padding-top: 140px;
     padding-bottom: 50px;
     padding-left: 30%;
     padding-right: 30%;
+    overflow: auto;
 }
 
 .post{
@@ -75,6 +87,13 @@ h1{
 .full-image{
     height: auto;
     object-fit: unset;
+}
+
+footer{
+    border-top: 2px solid #fe5f55;
+    background: #F6F6F6;
+    text-align: center;
+    padding: 40px;
 }
 
 .btn-orange{
