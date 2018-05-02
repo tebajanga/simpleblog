@@ -14,7 +14,7 @@
     </head>
     <body>
         <header>
-            <h1>Simple Blog</h1>
+            <h1><a href="index.php">Simple Blog</a></h1>
         </header>
 
         <div class="posts">
