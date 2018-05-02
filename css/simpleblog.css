@@ -72,6 +72,11 @@ h1{
     padding-left: 3px;
   }
 
+.full-image{
+    height: auto;
+    object-fit: unset;
+}
+
 .btn-orange{
     background: #fe5f55;
     color: #ffffff;
