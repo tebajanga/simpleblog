@@ -16,7 +16,7 @@ h1{
 }
 
 .posts{
-    padding-top: 50px;
+    padding-top: 30px;
     padding-bottom: 50px;
     padding-left: 30%;
     padding-right: 30%;
@@ -53,6 +53,8 @@ h1{
     background: #fafafa;
     padding: 30px;
     margin-bottom: 30px;
+    text-align: center;
+    color: #fe5f55;
 }
 
 .post p {
@@ -68,4 +70,18 @@ h1{
     padding-top: 4px;
     padding-right: 8px;
     padding-left: 3px;
+  }
+
+.btn-orange{
+    background: #fe5f55;
+    color: #ffffff;
+    font-size: 16px;
+    background: #fe6055;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+.btn-orange:hover {
+    background: #f2372e;
+    text-decoration: none;
   }
