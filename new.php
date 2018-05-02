@@ -1,3 +1,58 @@
+<!-- Adding new post -->
+<?php
+    if(isset($_POST['addpost'])){
+        // Check passed values
+        if( (isset($_POST['title']) && !empty($_POST['title'])) && 
+            (isset($_FILES['image']) && !empty($_FILES['image'])) &&
+            (isset($_POST['description']) && !empty($_POST['description'])) ){
+            
+            // is the file image?
+            if(getimagesize($_FILES["image"]["tmp_name"])){
+                // Prepare values.
+                $title = $_POST['title'];
+                $image_name = $_FILES["image"]["name"];
+                $description = $_POST['description'];
+
+                $target_dir = "uploads/images/";
+                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+
+                var_dump($target_file);
+
+                // Upload a file.
+                if(move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)){
+                    // Saving post to database.
+                    // Include config file
+                    require_once 'config/database.php';
+
+                    $sql = "INSERT INTO posts (`title`, `description`, `image`) VALUES ('$title', '$description', '$image_name')";
+                    if(mysqli_query($link, $sql)){
+                        echo "Records added successfully.";
+                    }
+                    else{
+                         // To Do. Fail to save post.
+                    }
+
+                    // close connection
+                    mysqli_close($link);
+                }
+                else{
+                    // To Do. Upload image failed.
+
+                }
+            }
+            else{
+                // To Do. Handling not image file.
+            }
+        }
+        else{
+            // To Do. No required values posted.
+        }
+    }
+    else{
+        // To Do. Handling no POST.
+
+    }
+?>
 <!DOCTYPE html>
     <head>
         <meta charset="utf-8">
@@ -21,7 +76,6 @@
                     <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;Posts
                 </a>
             </div>
-            <!-- Adding new post -->
             <?php
                 
             ?>
@@ -37,8 +91,8 @@
                 </div>
 
                 <div class="form-input">
-                    <label>Title</title>
-                    <input type="text" name="title" placeholder="Post Title" />
+                    <label>Image</title>
+                    <input type="file" name="image" placeholder="Post Title" />
                 </div>
 
                 <div class="form-input">

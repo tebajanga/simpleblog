@@ -95,6 +95,8 @@ h1{
 
 .post-form label{
     width: 100%;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .post-form input{
@@ -105,6 +107,7 @@ h1{
     color: #000000;
     font-size: 16px;
     text-indent: 10px;
+    margin-top: 8px;
 }
 
 .post-form textarea{
