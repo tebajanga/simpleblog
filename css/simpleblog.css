@@ -89,6 +89,42 @@ h1{
     object-fit: unset;
 }
 
+.post-form .form-input{
+    margin-bottom: 25px;
+}
+
+.post-form label{
+    width: 100%;
+}
+
+.post-form input{
+    width: 100%;
+    background: #ffffff;
+    height: 40px;
+    border: 1px solid #999;
+    color: #000000;
+    font-size: 16px;
+    text-indent: 10px;
+}
+
+.post-form textarea{
+    width: 100%;
+    background: #ffffff;
+    height: 300px;
+    border: 1px solid #999;
+    color: #000000;
+    font-size: 16px;
+    text-indent: 10px;
+    resize: none;
+}
+
+.post-form button{
+    border: 0px;
+    cursor: pointer;
+    float: right;
+    margin-right: -5px;
+}
+
 footer{
     border-top: 2px solid #fe5f55;
     background: #F6F6F6;
@@ -107,5 +143,18 @@ footer{
   
 .btn-orange:hover {
     background: #f2372e;
+    text-decoration: none;
+  }
+
+.btn-green {
+    color: #ffffff;
+    font-size: 16px;
+    background: #197278;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+  }
+  
+.btn-green:hover {
+    background: #146569;
     text-decoration: none;
   }

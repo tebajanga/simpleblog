@@ -37,7 +37,7 @@
                             if(mysqli_num_rows($result) == 1){
                                 // Displaying the post.
                                 if($post = mysqli_fetch_array($result, MYSQLI_ASSOC)){?>
-                                    <div style="width:100%; margin-bottom: 40px;">
+                                    <div style="width:100%; margin-bottom: 50px;">
                                         <a href="list.php" class="btn-orange">
                                             <span class="fa fa-arrow-left"></span>&nbsp;&nbsp;Posts
                                         </a>

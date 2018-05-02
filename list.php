@@ -16,6 +16,11 @@
         </header>
 
         <div class="posts">
+            <div style="width:100%; margin-bottom: 50px; text-align:right;">
+                <a href="new.php" class="btn-green">
+                    <span class="fa fa-plus"></span>&nbsp;&nbsp;New Post
+                </a>
+            </div>
             <!-- Fetching posts from database -->
             <?php
                 // Include config file
